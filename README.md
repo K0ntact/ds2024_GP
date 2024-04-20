@@ -12,8 +12,22 @@ In this project, our objective is creating a P2P chat system using MPI.
 - [License](#license) -->
 
 ## Design
+The design of our system is descirbes with details in the README.pdf.
 
 ## Installation and Usage
+We will use OpenMPI compiler, so if you did not install it, get it by the command:
+```bash
+sudo pacman -S openmpi
+```
+for who use Arch Linux
+Or
+```bash
+sudo apt install openmpi
+```
+for Ubuntu
+
+Next, clone the source code.
+
 First, compile the files using the following command:
 ```bash
 mpic++ peer1.cpp -o peer1
