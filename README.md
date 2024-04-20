@@ -19,7 +19,7 @@ We will use OpenMPI compiler, so if you did not install it, get it by the comman
 ```bash
 sudo pacman -S openmpi
 ```
-for who use Arch Linux
+for who use Arch Linux \\
 Or
 ```bash
 sudo apt install openmpi
