@@ -1,9 +1,9 @@
 #include <mpi.h>
 #include <cstring>
 #include <iostream>
-#include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 using namespace std;
 
@@ -29,10 +29,10 @@ int main(int argc, char *argv[]){
     int fd;
     char buffer[MAX_MESSAGE_LENGTH];
 
-    fd = open("./tmp/myfifo1", O_RDONLY | O_NONBLOCK);
+    fd = open("./myfifo1", O_RDONLY | O_NONBLOCK);
     if (fd == -1) {
-        perror("open");
-        return EXIT_FAILURE;
+        mkfifo("./myfifo1", 0666);
+        fd = open("./myfifo1", O_RDONLY | O_NONBLOCK);
     }
     while(1) {
         if (read(fd, buffer, sizeof(buffer)) > 0) {

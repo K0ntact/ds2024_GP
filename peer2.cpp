@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 using namespace std;
 
@@ -25,10 +26,10 @@ int main(int argc, char *argv[]){
     int fd;
     char inbuffer[MAX_MESSAGE_LENGTH];
     char outbuffer[MAX_MESSAGE_LENGTH];
-    fd = open("./tmp/myfifo2", O_RDONLY | O_NONBLOCK);
+    fd = open("./myfifo2", O_RDONLY | O_NONBLOCK);
     if (fd == -1) {
-        perror("open");
-        return EXIT_FAILURE;
+        mkfifo("./myfifo2", 0666);
+        fd = open("./myfifo2", O_RDONLY | O_NONBLOCK);
     }
 
     string message;
